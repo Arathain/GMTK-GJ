@@ -1,0 +1,50 @@
+[gd_scene load_steps=3 format=3 uid="uid://bmck46h4273oe"]
+
+[ext_resource type="FontFile" uid="uid://b6t0r8is5xdwr" path="res://assets/font/nova-mono_5.0.20/ttf/nova-mono-latin-400-normal.ttf" id="1_3jeia"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ygckn"]
+bg_color = Color(0, 0, 0, 0.501961)
+
+[node name="InputButton" type="Button"]
+custom_minimum_size = Vector2(0, 80)
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_ygckn")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="LabelAction" type="Label" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_fonts/font = ExtResource("1_3jeia")
+theme_override_font_sizes/font_size = 64
+text = "YEAH"
+vertical_alignment = 1
+
+[node name="Space" type="Control" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+
+[node name="LabelInput" type="Label" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_fonts/font = ExtResource("1_3jeia")
+theme_override_font_sizes/font_size = 64
+text = "INPUT KEY"
+vertical_alignment = 1

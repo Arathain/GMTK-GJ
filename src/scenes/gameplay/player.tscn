@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bmnp4e45h530o"]
+
+[ext_resource type="Script" path="res://scripts/actor/player.gd" id="1_1nk7v"]
+[ext_resource type="Script" path="res://scripts/actor/cell_positioning.gd" id="2_1y1fy"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_1nk7v")
+
+[node name="Cells" type="Node2D" parent="."]
+script = ExtResource("2_1y1fy")
