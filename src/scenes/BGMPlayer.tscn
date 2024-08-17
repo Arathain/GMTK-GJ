@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://ds28yejv7qtqg"]
+
+[ext_resource type="AudioStream" uid="uid://ciep3dvijf8fo" path="res://assets/audio/bgm.wav" id="1_k3hp6"]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_k3hp6")
+volume_db = -10.0
+autoplay = true
+max_distance = 200000.0

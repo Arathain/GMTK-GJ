@@ -1,8 +1,49 @@
-[gd_scene load_steps=2 format=3 uid="uid://4tslpblrv26t"]
+[gd_scene load_steps=7 format=3 uid="uid://4tslpblrv26t"]
 
+[ext_resource type="Script" path="res://scripts/actor/cell.gd" id="1_86pww"]
 [ext_resource type="Texture2D" uid="uid://dxd2aweq10cbk" path="res://assets/texture/game/blue_body_circle.png" id="1_x63de"]
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_x71n3"]
+friction = 0.1
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hu1d5"]
+radius = 41.0122
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mvy2n"]
+radius = 46.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rv7gf"]
+radius = 65.14
+
+[node name="Node2D" type="RigidBody2D"]
+mass = 2.65
+physics_material_override = SubResource("PhysicsMaterial_x71n3")
+gravity_scale = 0.0
+linear_damp = 2.04
+script = ExtResource("1_86pww")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1.5, 1.5, 1.5, 1)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_x63de")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_hu1d5")
+
+[node name="HurtBox" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("CircleShape2D_mvy2n")
+debug_color = Color(0.964706, 0, 0.482353, 0.0705882)
+
+[node name="CollectBox" type="Area2D" parent="." groups=["component_collector"]]
+unique_name_in_owner = true
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectBox"]
+shape = SubResource("CircleShape2D_rv7gf")
+debug_color = Color(0.948726, 0.224699, 0, 0.0705882)

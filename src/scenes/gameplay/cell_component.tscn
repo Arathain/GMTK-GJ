@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://caf2nuet631bu"]
+
+[ext_resource type="Script" path="res://scripts/actor/CellComponent.gd" id="1_evqj5"]
+[ext_resource type="Texture2D" uid="uid://ese06ac50cwm" path="res://assets/texture/game/green_hand_peace.png" id="2_tmywn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vbvvn"]
+radius = 12.0
+
+[node name="CellComponent" type="Area2D"]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("1_evqj5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -2
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_tmywn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
+shape = SubResource("CircleShape2D_vbvvn")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

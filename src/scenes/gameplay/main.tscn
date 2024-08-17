@@ -1,7 +1,131 @@
-[gd_scene load_steps=2 format=3 uid="uid://bhtaeisxwf3l5"]
+[gd_scene load_steps=15 format=3 uid="uid://bhtaeisxwf3l5"]
 
 [ext_resource type="PackedScene" uid="uid://bmnp4e45h530o" path="res://scenes/gameplay/player.tscn" id="1_2fj0y"]
+[ext_resource type="Script" path="res://scripts/world/main.gd" id="1_mr8vh"]
+[ext_resource type="Shader" path="res://shaders/background.gdshader" id="3_in7b1"]
+[ext_resource type="Texture2D" uid="uid://bo8vkudrx5f01" path="res://assets/texture/game/texture_03.png" id="3_xklho"]
+[ext_resource type="Script" path="res://scripts/world/EnemySpawner.gd" id="5_nqdpg"]
+[ext_resource type="Script" path="res://scripts/HUD.gd" id="6_1ewjd"]
+[ext_resource type="FontFile" uid="uid://b6t0r8is5xdwr" path="res://assets/font/nova-mono_5.0.20/ttf/nova-mono-latin-400-normal.ttf" id="6_5tdwh"]
+
+[sub_resource type="Environment" id="Environment_bpnw7"]
+background_mode = 3
+ambient_light_color = Color(0.0805885, 0.0559387, 0.135072, 1)
+ambient_light_energy = 2.43
+glow_enabled = true
+glow_intensity = 1.51
+glow_strength = 1.16
+glow_hdr_threshold = 0.84
+glow_hdr_luminance_cap = 60.16
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_84snm"]
+shader = ExtResource("3_in7b1")
+shader_parameter/offset = null
+shader_parameter/scale = null
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7t1ta"]
+bg_color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_evoa7"]
+bg_color = Color(0.137776, 0.80913, 0.398027, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t40ak"]
+bg_color = Color(0.288444, 0.542668, 0.992049, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rb1v0"]
+bg_color = Color(0, 0, 0, 0.741176)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ak4kk"]
+bg_color = Color(0.560601, 0.24024, 1, 1)
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_mr8vh")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_bpnw7")
 
 [node name="Player" parent="." instance=ExtResource("1_2fj0y")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -20
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+texture_filter = 1
+texture_repeat = 2
+material = SubResource("ShaderMaterial_84snm")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_xklho")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="CanvasLayer"]
+visible = false
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="CanvasLayer/ParallaxBackground"]
+motion_mirroring = Vector2(1024, 1024)
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/ParallaxLayer"]
+texture = ExtResource("3_xklho")
+centered = false
+
+[node name="EnemySpawner" type="Node2D" parent="."]
+script = ExtResource("5_nqdpg")
+
+[node name="ComponentRepo" type="Node" parent="."]
+
+[node name="HUD" type="CanvasLayer" parent="."]
+layer = 100
+script = ExtResource("6_1ewjd")
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD"]
+custom_minimum_size = Vector2(0, 200)
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 200
+theme_override_constants/margin_right = 200
+
+[node name="SustainBar" type="ProgressBar" parent="HUD/MarginContainer"]
+z_index = 3
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("6_5tdwh")
+theme_override_font_sizes/font_size = 128
+theme_override_styles/background = SubResource("StyleBoxFlat_7t1ta")
+theme_override_styles/fill = SubResource("StyleBoxFlat_evoa7")
+step = 0.1
+value = 19.1
+show_percentage = false
+
+[node name="AttackBar" type="ProgressBar" parent="HUD/MarginContainer"]
+z_index = 2
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("6_5tdwh")
+theme_override_font_sizes/font_size = 128
+theme_override_styles/background = SubResource("StyleBoxFlat_7t1ta")
+theme_override_styles/fill = SubResource("StyleBoxFlat_t40ak")
+step = 0.1
+value = 60.7
+show_percentage = false
+
+[node name="SpecialBar" type="ProgressBar" parent="HUD/MarginContainer"]
+z_index = 1
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("6_5tdwh")
+theme_override_font_sizes/font_size = 128
+theme_override_styles/background = SubResource("StyleBoxFlat_rb1v0")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ak4kk")
+step = 0.1
+value = 82.0
+show_percentage = false

@@ -11,6 +11,6 @@ func _process(delta):
 	var i = 0.0;
 	var c = float(get_child_count());
 	for child in get_children():
-		i += 1;
-		var vec = Vector2(sin(i/c * TAU), cos(i/c * TAU));
-		child.position = vec*128;
+		var vec = (position-child.position);
+		child.apply_central_force(vec*110.0);
+		child.linear_damp = 5.0 + 15.0/vec.length()

@@ -1,10 +1,33 @@
-[gd_scene load_steps=3 format=3 uid="uid://bmnp4e45h530o"]
+[gd_scene load_steps=5 format=3 uid="uid://bmnp4e45h530o"]
 
 [ext_resource type="Script" path="res://scripts/actor/player.gd" id="1_1nk7v"]
 [ext_resource type="Script" path="res://scripts/actor/cell_positioning.gd" id="2_1y1fy"]
+[ext_resource type="Texture2D" uid="uid://bm40b57tn4qta" path="res://assets/texture/game/yellow_body_circle.png" id="3_34s44"]
+[ext_resource type="Texture2D" uid="uid://dfwfwdwas42wm" path="res://assets/texture/ui/arrow_decorative_n.png" id="4_3us2p"]
 
-[node name="Node2D" type="Node2D"]
+[node name="Player" type="Node2D"]
 script = ExtResource("1_1nk7v")
 
 [node name="Cells" type="Node2D" parent="."]
 script = ExtResource("2_1y1fy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("3_34s44")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Marker2D"]
+z_index = 100
+position = Vector2(80, 0)
+rotation = 1.5708
+texture = ExtResource("4_3us2p")
+offset = Vector2(0, -32)
+
+[node name="Timer" type="Timer" parent="Marker2D"]
+wait_time = 0.3
+one_shot = true
+
+[node name="boolets" type="Node2D" parent="."]

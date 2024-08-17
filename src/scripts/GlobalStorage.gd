@@ -18,4 +18,11 @@ func loadSceneTrans(next : String, cursorIn : bool):
 	
 func runPost():
 	if (cursor): 
-		Input.set_custom_mouse_cursor(cursorLoad, 0, Vector2(32, 32)); 
+		Input.set_custom_mouse_cursor(cursorLoad, 0, Vector2(0, 0)); 
+
+enum CellType {
+	SUSTAIN,
+	ATTACK,
+	SPECIAL
+}
+
