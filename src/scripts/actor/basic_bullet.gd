@@ -16,6 +16,6 @@ func _physics_process(delta):
 
 func _on_body_entered(body):
 	if(body.has_method("enemy_take_damage")):
-		body.enemy_take_damage(5.0);
+		body.enemy_take_damage(5.0*PlayerStorage.getDecimal(PlayerStorage.UpgradeType.ATK));
 		queue_free();
 	pass # Replace with function body.

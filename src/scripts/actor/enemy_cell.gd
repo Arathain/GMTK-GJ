@@ -15,11 +15,11 @@ var max_health := 30.0;
 
 func _physics_process(delta):
 	var dir = (player.global_position-global_position).normalized();
-	velocity = dir * 35.0;
+	velocity = dir * 125.0;
 	move_and_slide();
 
 func drop_components():
-	for i in range(0, randi_range(1, 2)):
+	for i in range(0, randi_range(1, PlayerStorage.getValue(PlayerStorage.UpgradeType.DROP))):
 		var r = randf();
 		var c = cell_component.instantiate()
 		c.type = randi_range(0, 2)

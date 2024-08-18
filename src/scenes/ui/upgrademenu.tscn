@@ -1,0 +1,463 @@
+[gd_scene load_steps=18 format=3 uid="uid://cu3u6iduh8nay"]
+
+[ext_resource type="Script" path="res://scripts/upgrademenu.gd" id="1_tw30g"]
+[ext_resource type="StyleBox" uid="uid://bhtm6pj85tg3p" path="res://assets/style/hover_style_box_texture.tres" id="2_3ktds"]
+[ext_resource type="Shader" path="res://shaders/upgrademenubg.gdshader" id="2_fkipq"]
+[ext_resource type="Shader" path="res://shaders/blur.gdshader" id="2_ujt14"]
+[ext_resource type="StyleBox" uid="uid://dd3pbomvl8dx" path="res://assets/style/normal_upgrademenu.tres" id="3_40hdu"]
+[ext_resource type="FontFile" uid="uid://hdytp8muc17q" path="res://assets/font/Kenney Bold.ttf" id="4_2db28"]
+[ext_resource type="Texture2D" uid="uid://cg8ccghgqk1i3" path="res://assets/texture/ui/fantasyui/Transparent center/panel-transparent-center-018.png" id="5_eajad"]
+[ext_resource type="Texture2D" uid="uid://pdb10k1lfax2" path="res://assets/texture/ui/hp.png" id="5_o8wug"]
+[ext_resource type="Texture2D" uid="uid://dv0iculj53oek" path="res://assets/texture/ui/fantasyui/Divider Fade/divider-fade-004.png" id="6_cbr3f"]
+[ext_resource type="Script" path="res://scenes/ui/choice_button.gd" id="6_topvg"]
+[ext_resource type="FontFile" uid="uid://bhbr4dwn8143s" path="res://assets/font/Kenney Mini.ttf" id="7_alfep"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1khkn"]
+shader = ExtResource("2_ujt14")
+shader_parameter/blur = 2.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hrl6l"]
+shader = ExtResource("2_fkipq")
+shader_parameter/selected = 0.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_585rj"]
+content_margin_top = 30.0
+texture = ExtResource("5_eajad")
+texture_margin_left = 32.0
+texture_margin_top = 32.0
+texture_margin_right = 32.0
+texture_margin_bottom = 32.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bm6j0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x0d6g"]
+shader = ExtResource("2_fkipq")
+shader_parameter/selected = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w7vq7"]
+shader = ExtResource("2_fkipq")
+shader_parameter/selected = 0.0
+
+[node name="Control" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tw30g")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_1khkn")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0338533, 0.0338533, 0.0338533, 0.709804)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -664.0
+offset_top = -480.0
+offset_right = 664.0
+offset_bottom = 480.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 64
+alignment = 1
+
+[node name="ChoiceButton1" type="Button" parent="MarginContainer/HBoxContainer"]
+process_mode = 3
+texture_filter = 1
+material = SubResource("ShaderMaterial_hrl6l")
+custom_minimum_size = Vector2(400, 960)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("3_40hdu")
+theme_override_styles/hover = ExtResource("2_3ktds")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_585rj")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_bm6j0")
+action_mode = 0
+script = ExtResource("6_topvg")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/ChoiceButton1"]
+custom_minimum_size = Vector2(0, 420)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -244.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/ChoiceButton1/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/ChoiceButton1/MarginContainer/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_2db28")
+theme_override_font_sizes/font_size = 32
+text = "Max. HP"
+horizontal_alignment = 1
+
+[node name="Separator" type="HBoxContainer" parent="MarginContainer/HBoxContainer/ChoiceButton1/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/ChoiceButton1/MarginContainer/VBoxContainer/Separator"]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("6_cbr3f")
+stretch_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/HBoxContainer/ChoiceButton1/MarginContainer/VBoxContainer/Separator"]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("6_cbr3f")
+stretch_mode = 2
+flip_h = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/ChoiceButton1/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="LabelOld" type="Label" parent="MarginContainer/HBoxContainer/ChoiceButton1/MarginContainer/VBoxContainer/HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(0.847474, 0.847474, 0.847474, 1)
+theme_override_fonts/font = ExtResource("7_alfep")
+theme_override_font_sizes/font_size = 32
+text = "200"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LabelMiddle" type="Label" parent="MarginContainer/HBoxContainer/ChoiceButton1/MarginContainer/VBoxContainer/HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("7_alfep")
+theme_override_font_sizes/font_size = 32
+text = "->"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LabelNew" type="Label" parent="MarginContainer/HBoxContainer/ChoiceButton1/MarginContainer/VBoxContainer/HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(0.2656, 0.83, 0.4067, 1)
+theme_override_fonts/font = ExtResource("7_alfep")
+theme_override_font_sizes/font_size = 32
+text = "300"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/HBoxContainer/ChoiceButton1"]
+custom_minimum_size = Vector2(0, 512)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 512.0
+grow_horizontal = 2
+
+[node name="Control" type="Control" parent="MarginContainer/HBoxContainer/ChoiceButton1/CenterContainer"]
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/HBoxContainer/ChoiceButton1/CenterContainer/Control"]
+texture = ExtResource("5_o8wug")
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/HBoxContainer/ChoiceButton1"]
+custom_minimum_size = Vector2(0, 420)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 76.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/ChoiceButton1/MarginContainer2"]
+texture_filter = 1
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("4_2db28")
+theme_override_font_sizes/font_size = 16
+text = "Lv.1
+"
+horizontal_alignment = 1
+
+[node name="ChoiceButton2" type="Button" parent="MarginContainer/HBoxContainer"]
+process_mode = 3
+texture_filter = 1
+material = SubResource("ShaderMaterial_x0d6g")
+custom_minimum_size = Vector2(400, 960)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("3_40hdu")
+theme_override_styles/hover = ExtResource("2_3ktds")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_585rj")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_bm6j0")
+action_mode = 0
+script = ExtResource("6_topvg")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/ChoiceButton2"]
+custom_minimum_size = Vector2(0, 420)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -244.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/ChoiceButton2/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/ChoiceButton2/MarginContainer/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_2db28")
+theme_override_font_sizes/font_size = 32
+text = "Max. HP"
+horizontal_alignment = 1
+
+[node name="Separator" type="HBoxContainer" parent="MarginContainer/HBoxContainer/ChoiceButton2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/ChoiceButton2/MarginContainer/VBoxContainer/Separator"]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("6_cbr3f")
+stretch_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/HBoxContainer/ChoiceButton2/MarginContainer/VBoxContainer/Separator"]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("6_cbr3f")
+stretch_mode = 2
+flip_h = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/ChoiceButton2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="LabelOld" type="Label" parent="MarginContainer/HBoxContainer/ChoiceButton2/MarginContainer/VBoxContainer/HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(0.847474, 0.847474, 0.847474, 1)
+theme_override_fonts/font = ExtResource("7_alfep")
+theme_override_font_sizes/font_size = 32
+text = "200"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LabelMiddle" type="Label" parent="MarginContainer/HBoxContainer/ChoiceButton2/MarginContainer/VBoxContainer/HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("7_alfep")
+theme_override_font_sizes/font_size = 32
+text = "->"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LabelNew" type="Label" parent="MarginContainer/HBoxContainer/ChoiceButton2/MarginContainer/VBoxContainer/HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(0.2656, 0.83, 0.4067, 1)
+theme_override_fonts/font = ExtResource("7_alfep")
+theme_override_font_sizes/font_size = 32
+text = "300"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/HBoxContainer/ChoiceButton2"]
+custom_minimum_size = Vector2(0, 512)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 512.0
+grow_horizontal = 2
+
+[node name="Control" type="Control" parent="MarginContainer/HBoxContainer/ChoiceButton2/CenterContainer"]
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/HBoxContainer/ChoiceButton2/CenterContainer/Control"]
+texture = ExtResource("5_o8wug")
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/HBoxContainer/ChoiceButton2"]
+custom_minimum_size = Vector2(0, 420)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 76.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/ChoiceButton2/MarginContainer2"]
+texture_filter = 1
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("4_2db28")
+theme_override_font_sizes/font_size = 16
+text = "Lv.1
+"
+horizontal_alignment = 1
+
+[node name="ChoiceButton3" type="Button" parent="MarginContainer/HBoxContainer"]
+process_mode = 3
+texture_filter = 1
+material = SubResource("ShaderMaterial_w7vq7")
+custom_minimum_size = Vector2(400, 960)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("3_40hdu")
+theme_override_styles/hover = ExtResource("2_3ktds")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_585rj")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_bm6j0")
+action_mode = 0
+script = ExtResource("6_topvg")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/ChoiceButton3"]
+custom_minimum_size = Vector2(0, 420)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -244.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/ChoiceButton3/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/ChoiceButton3/MarginContainer/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_2db28")
+theme_override_font_sizes/font_size = 32
+text = "Max. HP"
+horizontal_alignment = 1
+
+[node name="Separator" type="HBoxContainer" parent="MarginContainer/HBoxContainer/ChoiceButton3/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/ChoiceButton3/MarginContainer/VBoxContainer/Separator"]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("6_cbr3f")
+stretch_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/HBoxContainer/ChoiceButton3/MarginContainer/VBoxContainer/Separator"]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("6_cbr3f")
+stretch_mode = 2
+flip_h = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/ChoiceButton3/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="LabelOld" type="Label" parent="MarginContainer/HBoxContainer/ChoiceButton3/MarginContainer/VBoxContainer/HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(0.847474, 0.847474, 0.847474, 1)
+theme_override_fonts/font = ExtResource("7_alfep")
+theme_override_font_sizes/font_size = 32
+text = "200"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LabelMiddle" type="Label" parent="MarginContainer/HBoxContainer/ChoiceButton3/MarginContainer/VBoxContainer/HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("7_alfep")
+theme_override_font_sizes/font_size = 32
+text = "->"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LabelNew" type="Label" parent="MarginContainer/HBoxContainer/ChoiceButton3/MarginContainer/VBoxContainer/HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(0.2656, 0.83, 0.4067, 1)
+theme_override_fonts/font = ExtResource("7_alfep")
+theme_override_font_sizes/font_size = 32
+text = "300"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/HBoxContainer/ChoiceButton3"]
+custom_minimum_size = Vector2(0, 512)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 512.0
+grow_horizontal = 2
+
+[node name="Control" type="Control" parent="MarginContainer/HBoxContainer/ChoiceButton3/CenterContainer"]
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/HBoxContainer/ChoiceButton3/CenterContainer/Control"]
+texture = ExtResource("5_o8wug")
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/HBoxContainer/ChoiceButton3"]
+custom_minimum_size = Vector2(0, 420)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 76.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/ChoiceButton3/MarginContainer2"]
+texture_filter = 1
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("4_2db28")
+theme_override_font_sizes/font_size = 16
+text = "Lv.1
+"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/ChoiceButton1" to="." method="_on_choice_button_1_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/ChoiceButton2" to="." method="_on_choice_button_2_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/ChoiceButton3" to="." method="_on_choice_button_3_pressed"]

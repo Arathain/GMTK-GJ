@@ -1,7 +1,31 @@
-[gd_scene load_steps=3 format=3 uid="uid://beilpftbbo4i5"]
+[gd_scene load_steps=11 format=3 uid="uid://beilpftbbo4i5"]
 
 [ext_resource type="Script" path="res://scripts/menu.gd" id="1_558tj"]
 [ext_resource type="FontFile" uid="uid://hdytp8muc17q" path="res://assets/font/Kenney Bold.ttf" id="2_a23j0"]
+[ext_resource type="Shader" path="res://shaders/menu_bg.gdshader" id="2_d6nnt"]
+[ext_resource type="Texture2D" uid="uid://bo8vkudrx5f01" path="res://assets/texture/game/texture_03.png" id="3_5674k"]
+[ext_resource type="StyleBox" uid="uid://bucef3k82gtbn" path="res://assets/style/normal_style_box_texture.tres" id="3_hqryq"]
+[ext_resource type="StyleBox" uid="uid://bhtm6pj85tg3p" path="res://assets/style/hover_style_box_texture.tres" id="4_t8yav"]
+[ext_resource type="StyleBox" uid="uid://dy2su535xmggd" path="res://assets/style/pressed_style_box_texture.tres" id="5_a47kp"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_jbsru"]
+frequency = 0.0045
+fractal_type = 2
+domain_warp_enabled = true
+domain_warp_amplitude = 30.52
+domain_warp_frequency = 0.055
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_g2yoy"]
+width = 1024
+seamless = true
+seamless_blend_skirt = 0.747
+noise = SubResource("FastNoiseLite_jbsru")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l3knm"]
+shader = ExtResource("2_d6nnt")
+shader_parameter/color = Color(0, 0.6744, 0.594705, 1)
+shader_parameter/bgcolor = Color(0, 0.0679496, 0.142329, 1)
+shader_parameter/noise = SubResource("NoiseTexture2D_g2yoy")
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -11,6 +35,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_558tj")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_l3knm")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_5674k")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -31,24 +65,37 @@ layout_mode = 2
 theme_override_constants/separation = 16
 
 [node name="Play" type="Button" parent="MarginContainer/VBoxContainer"]
+texture_filter = 1
 custom_minimum_size = Vector2(0, 256)
 layout_mode = 2
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_a23j0")
 theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = ExtResource("3_hqryq")
+theme_override_styles/hover = ExtResource("4_t8yav")
+theme_override_styles/pressed = ExtResource("5_a47kp")
 text = "Play"
 
 [node name="Settings" type="Button" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 256)
 layout_mode = 2
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_a23j0")
 theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = ExtResource("3_hqryq")
+theme_override_styles/hover = ExtResource("4_t8yav")
+theme_override_styles/pressed = ExtResource("5_a47kp")
 text = "Settings"
 
 [node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 256)
 layout_mode = 2
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_a23j0")
 theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = ExtResource("3_hqryq")
+theme_override_styles/hover = ExtResource("4_t8yav")
+theme_override_styles/pressed = ExtResource("5_a47kp")
 text = "Quit"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]

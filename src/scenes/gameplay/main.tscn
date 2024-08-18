@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bhtaeisxwf3l5"]
+[gd_scene load_steps=17 format=3 uid="uid://bhtaeisxwf3l5"]
 
 [ext_resource type="PackedScene" uid="uid://bmnp4e45h530o" path="res://scenes/gameplay/player.tscn" id="1_2fj0y"]
 [ext_resource type="Script" path="res://scripts/world/main.gd" id="1_mr8vh"]
@@ -7,6 +7,8 @@
 [ext_resource type="Script" path="res://scripts/world/EnemySpawner.gd" id="5_nqdpg"]
 [ext_resource type="Script" path="res://scripts/HUD.gd" id="6_1ewjd"]
 [ext_resource type="FontFile" uid="uid://b6t0r8is5xdwr" path="res://assets/font/nova-mono_5.0.20/ttf/nova-mono-latin-400-normal.ttf" id="6_5tdwh"]
+[ext_resource type="PackedScene" uid="uid://1h5hbaf8nbqd" path="res://scenes/ui/pausemenu.tscn" id="8_nbimy"]
+[ext_resource type="PackedScene" uid="uid://cu3u6iduh8nay" path="res://scenes/ui/upgrademenu.tscn" id="9_u2inf"]
 
 [sub_resource type="Environment" id="Environment_bpnw7"]
 background_mode = 3
@@ -22,6 +24,7 @@ glow_hdr_luminance_cap = 60.16
 shader = ExtResource("3_in7b1")
 shader_parameter/offset = null
 shader_parameter/scale = null
+shader_parameter/resolution = null
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7t1ta"]
 bg_color = Color(0, 0, 0, 0)
@@ -39,14 +42,18 @@ bg_color = Color(0, 0, 0, 0.741176)
 bg_color = Color(0.560601, 0.24024, 1, 1)
 
 [node name="Node2D" type="Node2D"]
+process_mode = 3
 script = ExtResource("1_mr8vh")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+process_mode = 1
 environment = SubResource("Environment_bpnw7")
 
 [node name="Player" parent="." instance=ExtResource("1_2fj0y")]
+process_mode = 1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+process_mode = 1
 layer = -20
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
@@ -71,11 +78,13 @@ texture = ExtResource("3_xklho")
 centered = false
 
 [node name="EnemySpawner" type="Node2D" parent="."]
+process_mode = 1
 script = ExtResource("5_nqdpg")
 
 [node name="ComponentRepo" type="Node" parent="."]
 
 [node name="HUD" type="CanvasLayer" parent="."]
+process_mode = 1
 layer = 100
 script = ExtResource("6_1ewjd")
 
@@ -129,3 +138,18 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_ak4kk")
 step = 0.1
 value = 82.0
 show_percentage = false
+
+[node name="PauseScreen" type="CanvasLayer" parent="."]
+process_mode = 3
+process_priority = 1
+layer = 128
+
+[node name="Control" parent="PauseScreen" instance=ExtResource("8_nbimy")]
+visible = false
+
+[node name="UpgradeScreen" type="CanvasLayer" parent="."]
+process_mode = 3
+layer = 127
+
+[node name="Control" parent="UpgradeScreen" instance=ExtResource("9_u2inf")]
+visible = false

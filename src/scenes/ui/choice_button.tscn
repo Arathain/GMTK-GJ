@@ -1,0 +1,150 @@
+[gd_scene load_steps=13 format=3 uid="uid://bd8a86muj4fq0"]
+
+[ext_resource type="Shader" path="res://shaders/upgrademenubg.gdshader" id="1_xgia6"]
+[ext_resource type="StyleBox" uid="uid://dd3pbomvl8dx" path="res://assets/style/normal_upgrademenu.tres" id="2_ytgno"]
+[ext_resource type="StyleBox" uid="uid://bhtm6pj85tg3p" path="res://assets/style/hover_style_box_texture.tres" id="3_0eux0"]
+[ext_resource type="Texture2D" uid="uid://cg8ccghgqk1i3" path="res://assets/texture/ui/fantasyui/Transparent center/panel-transparent-center-018.png" id="4_vov87"]
+[ext_resource type="Script" path="res://scenes/ui/choice_button.gd" id="5_5xjwp"]
+[ext_resource type="FontFile" uid="uid://hdytp8muc17q" path="res://assets/font/Kenney Bold.ttf" id="5_e5od7"]
+[ext_resource type="Texture2D" uid="uid://dv0iculj53oek" path="res://assets/texture/ui/fantasyui/Divider Fade/divider-fade-004.png" id="6_wrf3i"]
+[ext_resource type="FontFile" uid="uid://bhbr4dwn8143s" path="res://assets/font/Kenney Mini.ttf" id="7_e1pnk"]
+[ext_resource type="Texture2D" uid="uid://pdb10k1lfax2" path="res://assets/texture/ui/hp.png" id="8_rio5c"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w7vq7"]
+shader = ExtResource("1_xgia6")
+shader_parameter/selected = 0.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_585rj"]
+content_margin_top = 30.0
+texture = ExtResource("4_vov87")
+texture_margin_left = 32.0
+texture_margin_top = 32.0
+texture_margin_right = 32.0
+texture_margin_bottom = 32.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bm6j0"]
+
+[node name="ChoiceButton" type="Button"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_w7vq7")
+custom_minimum_size = Vector2(400, 960)
+theme_override_styles/normal = ExtResource("2_ytgno")
+theme_override_styles/hover = ExtResource("3_0eux0")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_585rj")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_bm6j0")
+action_mode = 0
+script = ExtResource("5_5xjwp")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(0, 420)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -244.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_e5od7")
+theme_override_font_sizes/font_size = 32
+text = "Max. HP"
+horizontal_alignment = 1
+
+[node name="Separator" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/Separator"]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("6_wrf3i")
+stretch_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/VBoxContainer/Separator"]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("6_wrf3i")
+stretch_mode = 2
+flip_h = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="LabelOld" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(0.847474, 0.847474, 0.847474, 1)
+theme_override_fonts/font = ExtResource("7_e1pnk")
+theme_override_font_sizes/font_size = 32
+text = "200"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LabelMiddle" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("7_e1pnk")
+theme_override_font_sizes/font_size = 32
+text = "->"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LabelNew" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(0.2656, 0.83, 0.4067, 1)
+theme_override_fonts/font = ExtResource("7_e1pnk")
+theme_override_font_sizes/font_size = 32
+text = "300"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+custom_minimum_size = Vector2(0, 512)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 512.0
+grow_horizontal = 2
+
+[node name="Control" type="Control" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="CenterContainer/Control"]
+texture = ExtResource("8_rio5c")
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(0, 420)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 76.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="Label" type="Label" parent="MarginContainer2"]
+texture_filter = 1
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("5_e5od7")
+theme_override_font_sizes/font_size = 16
+text = "Lv.1
+"
+horizontal_alignment = 1

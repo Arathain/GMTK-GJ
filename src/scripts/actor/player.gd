@@ -25,13 +25,15 @@ func _ready():
 	cell.name = "Cell1"
 	cells.add_child(cell);
 	SignalBus.cell_death.connect(_cell_death)
-	SignalBus.levelUp.connect(levelUp)
+	SignalBus.cellUpgrade.connect(cellUpgrade)
 	pass # Replace with function body.ww
 
 func _cell_death(cell : Cell):
+	PlayerStorage.levelDecrement(cell.type);
+	PlayerStorage.nextLevel -= 2;
 	cell.queue_free();
 
-func levelUp(type : GlobalStorage.CellType):
+func cellUpgrade(type : PlayerStorage.UpgradeType):
 	var cell = cellInstance.instantiate();
 	cell.name = "Cell" + str(cells.get_child_count()+1);
 	cell.type = type;
@@ -65,10 +67,13 @@ func shoot():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
+	if(cells.get_child_count() == 0):
+		GlobalStorage.loadSceneTransition("menu");
+		PlayerStorage.reset();
 	if(Input.is_action_pressed("basic_attack")):
 		shoot();
 	var input = Vector2(int(Input.is_action_pressed("m_right")) - int(Input.is_action_pressed("m_left")), int(Input.is_action_pressed("m_down")) - int(Input.is_action_pressed("m_up"))).normalized()
-	position += input*2.;
+	position += input*1.8*PlayerStorage.getDecimal(PlayerStorage.UpgradeType.SPD);
 	var zoom = 2.0/(log(cells.get_child_count()+1.0)/log(10.0)+1.0)
 	camera.zoom = Vector2(zoom, zoom);
 	

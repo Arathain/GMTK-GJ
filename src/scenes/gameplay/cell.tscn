@@ -1,10 +1,58 @@
-[gd_scene load_steps=7 format=3 uid="uid://4tslpblrv26t"]
+[gd_scene load_steps=12 format=3 uid="uid://4tslpblrv26t"]
 
 [ext_resource type="Script" path="res://scripts/actor/cell.gd" id="1_86pww"]
-[ext_resource type="Texture2D" uid="uid://dxd2aweq10cbk" path="res://assets/texture/game/blue_body_circle.png" id="1_x63de"]
+[ext_resource type="Texture2D" uid="uid://c16wcwevyjnre" path="res://assets/texture/game/max_hp_spritesheet.png" id="2_wb5ob"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_x71n3"]
 friction = 0.1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mx4d6"]
+atlas = ExtResource("2_wb5ob")
+region = Rect2(0, 0, 1080, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ys7c"]
+atlas = ExtResource("2_wb5ob")
+region = Rect2(3240, 0, 1080, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2rm43"]
+atlas = ExtResource("2_wb5ob")
+region = Rect2(2160, 0, 1080, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xd3r1"]
+atlas = ExtResource("2_wb5ob")
+region = Rect2(1080, 0, 1080, 1080)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jgbdg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mx4d6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mx4d6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ys7c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ys7c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2rm43")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2rm43")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xd3r1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xd3r1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hu1d5"]
 radius = 41.0122
@@ -22,10 +70,10 @@ gravity_scale = 0.0
 linear_damp = 2.04
 script = ExtResource("1_86pww")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(1.5, 1.5, 1.5, 1)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_x63de")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_jgbdg")
+frame_progress = 0.676505
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_hu1d5")

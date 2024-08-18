@@ -3,6 +3,7 @@ render_mode skip_vertex_transform;
 
 uniform vec2 offset;
 uniform vec2 scale;
+uniform int resolution;
 
 varying vec2 coord;
 
@@ -11,7 +12,7 @@ void vertex() {
 
 void fragment() {
 	//vec2 uv = (UV+offset/80.0)*scale;
-	vec2 offs = offset/1275.0;
+	vec2 offs = offset/(float(resolution)*0.5);
 	vec2 uv = ((SCREEN_UV)-0.5)*(2.0/scale)+0.5+offs;
 	COLOR = textureLod(TEXTURE, uv, 0.0);
 	//COLOR = vec4(uv, 0.0, 1.0);

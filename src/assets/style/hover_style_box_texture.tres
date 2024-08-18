@@ -1,0 +1,11 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://bhtm6pj85tg3p"]
+
+[ext_resource type="Texture2D" uid="uid://wda0r1crrqpi" path="res://assets/texture/ui/fantasyui/Transparent center/panel-transparent-center-020.png" id="1_b0nbc"]
+
+[resource]
+content_margin_top = 30.0
+texture = ExtResource("1_b0nbc")
+texture_margin_left = 44.0
+texture_margin_top = 44.0
+texture_margin_right = 44.0
+texture_margin_bottom = 44.0
