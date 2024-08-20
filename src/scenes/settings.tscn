@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/settings.gd" id="1_24yg1"]
 [ext_resource type="PackedScene" uid="uid://bmck46h4273oe" path="res://scenes/input_button.tscn" id="2_v5bjl"]
-[ext_resource type="FontFile" uid="uid://b6t0r8is5xdwr" path="res://assets/font/nova-mono_5.0.20/ttf/nova-mono-latin-400-normal.ttf" id="3_k5kkp"]
+[ext_resource type="FontFile" uid="uid://hdytp8muc17q" path="res://assets/font/Kenney Bold.ttf" id="3_hfad1"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -69,8 +69,8 @@ layout_mode = 2
 [node name="Back" type="Button" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_k5kkp")
-theme_override_font_sizes/font_size = 64
+theme_override_fonts/font = ExtResource("3_hfad1")
+theme_override_font_sizes/font_size = 48
 text = "Back"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]

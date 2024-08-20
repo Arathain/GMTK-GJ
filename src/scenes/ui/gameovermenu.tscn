@@ -1,0 +1,94 @@
+[gd_scene load_steps=9 format=3 uid="uid://did5etqcr0pig"]
+
+[ext_resource type="FontFile" uid="uid://hdytp8muc17q" path="res://assets/font/Kenney Bold.ttf" id="1_7uyay"]
+[ext_resource type="Script" path="res://scripts/gameovermenu.gd" id="1_hambu"]
+[ext_resource type="FontFile" uid="uid://bhbr4dwn8143s" path="res://assets/font/Kenney Mini.ttf" id="2_llmbp"]
+[ext_resource type="StyleBox" uid="uid://bucef3k82gtbn" path="res://assets/style/normal_style_box_texture.tres" id="2_rljxa"]
+[ext_resource type="StyleBox" uid="uid://bhtm6pj85tg3p" path="res://assets/style/hover_style_box_texture.tres" id="3_0a72v"]
+[ext_resource type="StyleBox" uid="uid://dy2su535xmggd" path="res://assets/style/pressed_style_box_texture.tres" id="4_2jn56"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xi4dg"]
+font = ExtResource("1_7uyay")
+font_size = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_5xyxc"]
+font = ExtResource("2_llmbp")
+font_size = 32
+
+[node name="Control" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hambu")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0338533, 0.0338533, 0.0338533, 0.709804)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -268.0
+offset_top = -182.5
+offset_right = 268.0
+offset_bottom = 182.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+pivot_offset = Vector2(268, 182)
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "GAME OVER"
+label_settings = SubResource("LabelSettings_xi4dg")
+horizontal_alignment = 1
+
+[node name="Score" type="Label" parent="MarginContainer/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+text = "Score: 8124127641"
+label_settings = SubResource("LabelSettings_5xyxc")
+horizontal_alignment = 1
+
+[node name="Resume" type="Button" parent="MarginContainer/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_7uyay")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("2_rljxa")
+theme_override_styles/hover = ExtResource("3_0a72v")
+theme_override_styles/pressed = ExtResource("4_2jn56")
+text = "PLAY AGAIN"
+
+[node name="Save & Quit" type="Button" parent="MarginContainer/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_7uyay")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("2_rljxa")
+theme_override_styles/hover = ExtResource("3_0a72v")
+theme_override_styles/pressed = ExtResource("4_2jn56")
+text = "QUIT "
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Save & Quit" to="." method="_on_save__quit_pressed"]

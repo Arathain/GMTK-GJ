@@ -1,0 +1,10 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://hjs0dlw07cv3"]
+
+[ext_resource type="Texture2D" uid="uid://dnnj4ipgfqwow" path="res://assets/texture/ui/fantasyui/Panel/panel-007.png" id="1_63nrh"]
+
+[resource]
+texture = ExtResource("1_63nrh")
+texture_margin_left = 29.0
+texture_margin_top = 29.0
+texture_margin_right = 29.0
+texture_margin_bottom = 29.0

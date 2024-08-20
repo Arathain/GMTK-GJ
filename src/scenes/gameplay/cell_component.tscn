@@ -1,20 +1,22 @@
 [gd_scene load_steps=4 format=3 uid="uid://caf2nuet631bu"]
 
 [ext_resource type="Script" path="res://scripts/actor/CellComponent.gd" id="1_evqj5"]
-[ext_resource type="Texture2D" uid="uid://ese06ac50cwm" path="res://assets/texture/game/green_hand_peace.png" id="2_tmywn"]
+[ext_resource type="Texture2D" uid="uid://crjp20jdwaa1d" path="res://assets/texture/game/cc_sustain.png" id="2_jf26q"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vbvvn"]
 radius = 12.0
 
 [node name="CellComponent" type="Area2D"]
+process_mode = 1
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("1_evqj5")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = -2
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("2_tmywn")
+position = Vector2(0, -4)
+scale = Vector2(0.04, 0.04)
+texture = ExtResource("2_jf26q")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4)

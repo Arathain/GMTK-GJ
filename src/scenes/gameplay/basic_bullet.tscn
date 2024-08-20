@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dewdld3qs3x72"]
 
-[ext_resource type="Texture2D" uid="uid://bhnidigxktvtm" path="res://assets/texture/game/purple_body_rhombus.png" id="1_506eu"]
 [ext_resource type="Script" path="res://scripts/actor/basic_bullet.gd" id="1_y6tor"]
+[ext_resource type="Texture2D" uid="uid://d05qxibi7ep6q" path="res://assets/texture/game/rhombus_projectile.png" id="2_5kq3y"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uwrxq"]
 radius = 23.0
@@ -18,7 +18,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2, 0.3, 1),
 "transitions": PackedFloat32Array(2.14355, 0.378929, 0.105112, 0.011362),
 "update": 0,
-"values": [Vector2(0.25, 0.4), Vector2(0.25, 1.2), Vector2(0.5, 0.4), Vector2(0.25, 0.4)]
+"values": [Vector2(0.05, 0.05), Vector2(0.05, 0.12), Vector2(0.1, 0.05), Vector2(0.05, 0.05)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1aa0u"]
@@ -28,16 +28,17 @@ _data = {
 
 [node name="Node2D" type="Area2D"]
 top_level = true
+z_index = 20
 collision_layer = 0
 collision_mask = 3
 script = ExtResource("1_y6tor")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.25, 0.4)
-texture = ExtResource("1_506eu")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_uwrxq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_5kq3y")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

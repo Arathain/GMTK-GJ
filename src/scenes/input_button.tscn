@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bmck46h4273oe"]
 
-[ext_resource type="FontFile" uid="uid://b6t0r8is5xdwr" path="res://assets/font/nova-mono_5.0.20/ttf/nova-mono-latin-400-normal.ttf" id="1_3jeia"]
+[ext_resource type="FontFile" uid="uid://hdytp8muc17q" path="res://assets/font/Kenney Bold.ttf" id="1_s0cln"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ygckn"]
 bg_color = Color(0, 0, 0, 0.501961)
@@ -31,8 +31,8 @@ layout_mode = 2
 [node name="LabelAction" type="Label" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
 mouse_filter = 1
-theme_override_fonts/font = ExtResource("1_3jeia")
-theme_override_font_sizes/font_size = 64
+theme_override_fonts/font = ExtResource("1_s0cln")
+theme_override_font_sizes/font_size = 48
 text = "YEAH"
 vertical_alignment = 1
 
@@ -44,7 +44,7 @@ mouse_filter = 1
 [node name="LabelInput" type="Label" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
 mouse_filter = 1
-theme_override_fonts/font = ExtResource("1_3jeia")
-theme_override_font_sizes/font_size = 64
+theme_override_fonts/font = ExtResource("1_s0cln")
+theme_override_font_sizes/font_size = 48
 text = "INPUT KEY"
 vertical_alignment = 1

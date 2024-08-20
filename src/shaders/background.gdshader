@@ -14,7 +14,9 @@ void fragment() {
 	//vec2 uv = (UV+offset/80.0)*scale;
 	vec2 offs = offset/(float(resolution)*0.5);
 	vec2 uv = ((SCREEN_UV)-0.5)*(2.0/scale)+0.5+offs;
-	COLOR = textureLod(TEXTURE, uv, 0.0);
+	uv *= 3.0;
+	uv.y += sin(uv.x * TAU + TIME * 0.01)*0.1;
+	COLOR = textureLod(TEXTURE, uv+TIME*(-0.01), 0.1);
 	//COLOR = vec4(uv, 0.0, 1.0);
 }
 

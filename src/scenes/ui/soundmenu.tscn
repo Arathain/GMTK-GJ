@@ -1,0 +1,98 @@
+[gd_scene load_steps=8 format=3 uid="uid://bis43o11asj4a"]
+
+[ext_resource type="Script" path="res://scripts/soundmenu.gd" id="1_fi2se"]
+[ext_resource type="FontFile" uid="uid://hdytp8muc17q" path="res://assets/font/Kenney Bold.ttf" id="1_w4m4o"]
+[ext_resource type="PackedScene" uid="uid://bt4av5s7ehqcu" path="res://scenes/ui/volume_slider.tscn" id="2_h1014"]
+[ext_resource type="StyleBox" uid="uid://bucef3k82gtbn" path="res://assets/style/normal_style_box_texture.tres" id="3_lyia2"]
+[ext_resource type="StyleBox" uid="uid://bhtm6pj85tg3p" path="res://assets/style/hover_style_box_texture.tres" id="4_er40e"]
+[ext_resource type="StyleBox" uid="uid://dy2su535xmggd" path="res://assets/style/pressed_style_box_texture.tres" id="5_hwt8w"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_dt8hj"]
+font = ExtResource("1_w4m4o")
+font_size = 32
+
+[node name="Control" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fi2se")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0338533, 0.0338533, 0.0338533, 0.709804)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -198.0
+offset_top = -112.0
+offset_right = 198.0
+offset_bottom = 112.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+pivot_offset = Vector2(202, 172)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="MasterLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Master Volume"
+label_settings = SubResource("LabelSettings_dt8hj")
+horizontal_alignment = 1
+
+[node name="mslider" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_h1014")]
+layout_mode = 2
+value = 1.0
+bus_name = "Master"
+
+[node name="MusicLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Music Volume
+"
+label_settings = SubResource("LabelSettings_dt8hj")
+horizontal_alignment = 1
+
+[node name="musicslider" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_h1014")]
+layout_mode = 2
+value = 1.0
+bus_name = "Music"
+
+[node name="SFXLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "SFX Volume"
+label_settings = SubResource("LabelSettings_dt8hj")
+horizontal_alignment = 1
+
+[node name="sfxslider" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_h1014")]
+layout_mode = 2
+value = 1.0
+bus_name = "SFX"
+
+[node name="Back" type="Button" parent="MarginContainer/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_w4m4o")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = ExtResource("3_lyia2")
+theme_override_styles/hover = ExtResource("4_er40e")
+theme_override_styles/pressed = ExtResource("5_hwt8w")
+text = "BACK"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]

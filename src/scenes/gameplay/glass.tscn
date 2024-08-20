@@ -1,0 +1,61 @@
+[gd_scene load_steps=5 format=3 uid="uid://dek36ef36kb53"]
+
+[ext_resource type="Texture2D" uid="uid://cfswuj0fgos7t" path="res://assets/texture/game/glass.png" id="1_qqcm8"]
+[ext_resource type="Texture2D" uid="uid://8gprn6kxegxt" path="res://assets/texture/game/glass_ball.png" id="2_7n8ab"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_rcmwf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n1ud1"]
+size = Vector2(100, 6950)
+
+[node name="Glass" type="StaticBody2D"]
+physics_material_override = SubResource("PhysicsMaterial_rcmwf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 30
+position = Vector2(0, -439)
+texture = ExtResource("1_qqcm8")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D"]
+z_index = 30
+position = Vector2(0, 870)
+texture = ExtResource("1_qqcm8")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D/Sprite2D"]
+z_index = 30
+position = Vector2(0, 870)
+texture = ExtResource("1_qqcm8")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D/Sprite2D/Sprite2D"]
+z_index = 30
+position = Vector2(0, 870)
+texture = ExtResource("1_qqcm8")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D/Sprite2D/Sprite2D/Sprite2D"]
+z_index = 30
+position = Vector2(0, 870)
+texture = ExtResource("1_qqcm8")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Sprite2D/Sprite2D/Sprite2D/Sprite2D/Sprite2D"]
+z_index = 60
+position = Vector2(-4, -6561)
+scale = Vector2(1.16, 1.15355)
+texture = ExtResource("2_7n8ab")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+z_index = 30
+position = Vector2(0, -1309)
+texture = ExtResource("1_qqcm8")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Sprite2D2"]
+z_index = 30
+position = Vector2(0, -870)
+texture = ExtResource("1_qqcm8")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Sprite2D2/Sprite2D2"]
+z_index = 30
+position = Vector2(0, -870)
+texture = ExtResource("1_qqcm8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_n1ud1")

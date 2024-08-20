@@ -1,9 +1,30 @@
-[gd_scene load_steps=5 format=3 uid="uid://bmnp4e45h530o"]
+[gd_scene load_steps=12 format=3 uid="uid://bmnp4e45h530o"]
 
 [ext_resource type="Script" path="res://scripts/actor/player.gd" id="1_1nk7v"]
 [ext_resource type="Script" path="res://scripts/actor/cell_positioning.gd" id="2_1y1fy"]
-[ext_resource type="Texture2D" uid="uid://bm40b57tn4qta" path="res://assets/texture/game/yellow_body_circle.png" id="3_34s44"]
-[ext_resource type="Texture2D" uid="uid://dfwfwdwas42wm" path="res://assets/texture/ui/arrow_decorative_n.png" id="4_3us2p"]
+[ext_resource type="Texture2D" uid="uid://cs0jg8iwqvhf4" path="res://assets/texture/ui/pointer.png" id="3_sf4fc"]
+[ext_resource type="Script" path="res://scripts/actor/Orbit.gd" id="4_m1pre"]
+[ext_resource type="Texture2D" uid="uid://dpelacyxded2d" path="res://assets/texture/game/shotgun.png" id="4_podys"]
+[ext_resource type="AudioStream" uid="uid://64eijud34itd" path="res://assets/audio/burst.wav" id="5_i3sv7"]
+[ext_resource type="AudioStream" uid="uid://dr585kq32rkwt" path="res://assets/audio/orbit_loop.wav" id="5_iek5r"]
+[ext_resource type="AudioStream" uid="uid://xdj8ol45xxfv" path="res://assets/audio/shoot.wav" id="6_akjf2"]
+
+[sub_resource type="Gradient" id="Gradient_xqvjo"]
+offsets = PackedFloat32Array(0.180328, 0.418033, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 0.980198, 0, 0.457935, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_hoxms"]
+gradient = SubResource("Gradient_xqvjo")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5vjw1"]
+particle_flag_align_y = true
+particle_flag_disable_z = true
+direction = Vector3(4, 0, 0)
+spread = 30.0
+initial_velocity_min = 400.0
+initial_velocity_max = 500.0
+gravity = Vector3(0, 0, 0)
+color_ramp = SubResource("GradientTexture1D_hoxms")
 
 [node name="Player" type="Node2D"]
 script = ExtResource("1_1nk7v")
@@ -11,23 +32,75 @@ script = ExtResource("1_1nk7v")
 [node name="Cells" type="Node2D" parent="."]
 script = ExtResource("2_1y1fy")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
-texture = ExtResource("3_34s44")
-
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Marker2D" type="Marker2D" parent="."]
-
-[node name="Sprite2D" type="Sprite2D" parent="Marker2D"]
-z_index = 100
-position = Vector2(80, 0)
-rotation = 1.5708
-texture = ExtResource("4_3us2p")
-offset = Vector2(0, -32)
 
 [node name="Timer" type="Timer" parent="Marker2D"]
 wait_time = 0.3
 one_shot = true
 
+[node name="Sprite2D" type="Sprite2D" parent="Marker2D"]
+modulate = Color(1, 1, 1, 0.658824)
+z_index = 100
+texture_filter = 6
+position = Vector2(80, -2.91038e-11)
+rotation = 1.5708
+scale = Vector2(0.5, 0.063)
+texture = ExtResource("3_sf4fc")
+offset = Vector2(0, -512)
+
+[node name="ExpTimer" type="Timer" parent="Marker2D"]
+wait_time = 12.0
+one_shot = true
+
+[node name="ShotgunTimer" type="Timer" parent="Marker2D"]
+wait_time = 2.0
+one_shot = true
+
+[node name="Marker2D" type="Marker2D" parent="Marker2D"]
+position = Vector2(80, 0)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Marker2D/Marker2D"]
+position = Vector2(7.62939e-06, 3.1225e-17)
+scale = Vector2(3, 3)
+emitting = false
+amount = 48
+process_material = SubResource("ParticleProcessMaterial_5vjw1")
+texture = ExtResource("4_podys")
+lifetime = 0.15
+one_shot = true
+local_coords = true
+
+[node name="Area2D" type="Area2D" parent="Marker2D/Marker2D"]
+position = Vector2(7.62939e-06, 3.1225e-17)
+collision_layer = 0
+collision_mask = 3
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Marker2D/Marker2D/Area2D"]
+polygon = PackedVector2Array(0, 0, 200, 100, 240, 0, 200, -100)
+
+[node name="ShotgunPlayer" type="AudioStreamPlayer2D" parent="Marker2D"]
+stream = ExtResource("5_i3sv7")
+pitch_scale = 1.1
+bus = &"SFX"
+
 [node name="boolets" type="Node2D" parent="."]
+
+[node name="Orbit" type="Node2D" parent="." node_paths=PackedStringArray("player")]
+script = ExtResource("4_m1pre")
+player = NodePath("..")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_iek5r")
+volume_db = -10.0
+pitch_scale = 1.1
+bus = &"SFX"
+
+[node name="ShootPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_akjf2")
+volume_db = -10.0
+pitch_scale = 1.1
+bus = &"SFX"
+
+[connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_audio_stream_player_2d_finished"]

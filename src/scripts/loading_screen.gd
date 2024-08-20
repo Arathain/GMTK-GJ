@@ -10,7 +10,7 @@ func _ready():
 func _process(delta):
 	var prog = []
 	ResourceLoader.load_threaded_get_status(GlobalStorage.next_scene, prog);
-	$ProgressBar.value = prog[0] * 100;
+	$MarginContainer/ProgressBar.value = prog[0] * 100;
 	
 	if prog[0] == 1:
 		var packed = ResourceLoader.load_threaded_get(GlobalStorage.next_scene);
