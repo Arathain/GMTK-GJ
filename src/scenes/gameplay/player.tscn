@@ -1,9 +1,9 @@
 [gd_scene load_steps=12 format=3 uid="uid://bmnp4e45h530o"]
 
-[ext_resource type="Script" path="res://scripts/actor/player.gd" id="1_1nk7v"]
-[ext_resource type="Script" path="res://scripts/actor/cell_positioning.gd" id="2_1y1fy"]
+[ext_resource type="Script" uid="uid://criwiynr2b261" path="res://scripts/actor/player.gd" id="1_1nk7v"]
+[ext_resource type="Script" uid="uid://lru464cymwpj" path="res://scripts/actor/cell_positioning.gd" id="2_1y1fy"]
 [ext_resource type="Texture2D" uid="uid://cs0jg8iwqvhf4" path="res://assets/texture/ui/pointer.png" id="3_sf4fc"]
-[ext_resource type="Script" path="res://scripts/actor/Orbit.gd" id="4_m1pre"]
+[ext_resource type="Script" uid="uid://qxsxrj7s76aj" path="res://scripts/actor/Orbit.gd" id="4_m1pre"]
 [ext_resource type="Texture2D" uid="uid://dpelacyxded2d" path="res://assets/texture/game/shotgun.png" id="4_podys"]
 [ext_resource type="AudioStream" uid="uid://64eijud34itd" path="res://assets/audio/burst.wav" id="5_i3sv7"]
 [ext_resource type="AudioStream" uid="uid://dr585kq32rkwt" path="res://assets/audio/orbit_loop.wav" id="5_iek5r"]

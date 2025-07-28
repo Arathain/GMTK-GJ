@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dee51jqq151jj"]
 
-[ext_resource type="Script" path="res://scripts/settings_ingame.gd" id="1_6pk7p"]
+[ext_resource type="Script" uid="uid://7nwpt6rblwmh" path="res://scripts/settings_ingame.gd" id="1_6pk7p"]
 [ext_resource type="PackedScene" uid="uid://bmck46h4273oe" path="res://scenes/input_button.tscn" id="2_5rb8m"]
 [ext_resource type="FontFile" uid="uid://hdytp8muc17q" path="res://assets/font/Kenney Bold.ttf" id="3_capcu"]
 

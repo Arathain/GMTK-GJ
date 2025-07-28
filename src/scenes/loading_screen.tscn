@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://b3ycks1flt1bs"]
 
-[ext_resource type="Script" path="res://scripts/loading_screen.gd" id="1_qej07"]
-[ext_resource type="Shader" path="res://shaders/menu_bg.gdshader" id="2_io5tu"]
+[ext_resource type="Script" uid="uid://u6pgbtsytyqq" path="res://scripts/loading_screen.gd" id="1_qej07"]
+[ext_resource type="Shader" uid="uid://pihqkr4tkbjd" path="res://shaders/menu_bg.gdshader" id="2_io5tu"]
 [ext_resource type="Texture2D" uid="uid://b54b0j6wwm61j" path="res://assets/texture/game/texture_03.png" id="3_taqfi"]
 [ext_resource type="FontFile" uid="uid://cdywrumdg0vfr" path="res://assets/font/Kenney Blocks.ttf" id="4_2hq0g"]
 [ext_resource type="StyleBox" uid="uid://dbpeueqmtymq6" path="res://assets/style/load_style_bg.tres" id="5_dsy48"]
@@ -22,9 +22,9 @@ noise = SubResource("FastNoiseLite_aali8")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_shwi7"]
 shader = ExtResource("2_io5tu")
+shader_parameter/noise = SubResource("NoiseTexture2D_g2yoy")
 shader_parameter/color = Color(0, 0.6744, 0.594705, 1)
 shader_parameter/bgcolor = Color(0, 0.0679496, 0.142329, 1)
-shader_parameter/noise = SubResource("NoiseTexture2D_g2yoy")
 
 [node name="loading_screen" type="Control"]
 layout_mode = 3

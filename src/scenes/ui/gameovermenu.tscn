@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://did5etqcr0pig"]
 
 [ext_resource type="FontFile" uid="uid://hdytp8muc17q" path="res://assets/font/Kenney Bold.ttf" id="1_7uyay"]
-[ext_resource type="Script" path="res://scripts/gameovermenu.gd" id="1_hambu"]
+[ext_resource type="Script" uid="uid://nx05xhj82i1m" path="res://scripts/gameovermenu.gd" id="1_hambu"]
 [ext_resource type="FontFile" uid="uid://bhbr4dwn8143s" path="res://assets/font/Kenney Mini.ttf" id="2_llmbp"]
 [ext_resource type="StyleBox" uid="uid://bucef3k82gtbn" path="res://assets/style/normal_style_box_texture.tres" id="2_rljxa"]
 [ext_resource type="StyleBox" uid="uid://bhtm6pj85tg3p" path="res://assets/style/hover_style_box_texture.tres" id="3_0a72v"]

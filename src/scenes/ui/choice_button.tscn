@@ -1,10 +1,10 @@
 [gd_scene load_steps=13 format=3 uid="uid://bd8a86muj4fq0"]
 
-[ext_resource type="Shader" path="res://shaders/upgrademenubg.gdshader" id="1_xgia6"]
+[ext_resource type="Shader" uid="uid://uvjgo08f0m5e" path="res://shaders/upgrademenubg.gdshader" id="1_xgia6"]
 [ext_resource type="StyleBox" uid="uid://dd3pbomvl8dx" path="res://assets/style/normal_upgrademenu.tres" id="2_ytgno"]
 [ext_resource type="StyleBox" uid="uid://bhtm6pj85tg3p" path="res://assets/style/hover_style_box_texture.tres" id="3_0eux0"]
 [ext_resource type="Texture2D" uid="uid://cg8ccghgqk1i3" path="res://assets/texture/ui/fantasyui/Transparent center/panel-transparent-center-018.png" id="4_vov87"]
-[ext_resource type="Script" path="res://scenes/ui/choice_button.gd" id="5_5xjwp"]
+[ext_resource type="Script" uid="uid://da7gady73fhga" path="res://scenes/ui/choice_button.gd" id="5_5xjwp"]
 [ext_resource type="FontFile" uid="uid://hdytp8muc17q" path="res://assets/font/Kenney Bold.ttf" id="5_e5od7"]
 [ext_resource type="Texture2D" uid="uid://dv0iculj53oek" path="res://assets/texture/ui/fantasyui/Divider Fade/divider-fade-004.png" id="6_wrf3i"]
 [ext_resource type="FontFile" uid="uid://bhbr4dwn8143s" path="res://assets/font/Kenney Mini.ttf" id="7_e1pnk"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bt4av5s7ehqcu"]
 
 [ext_resource type="Texture2D" uid="uid://btg3mehnpkpi" path="res://assets/style/empty.tres" id="1_2ixks"]
-[ext_resource type="Script" path="res://scripts/volume_slider.gd" id="1_owmri"]
+[ext_resource type="Script" uid="uid://c8181oi78vkyl" path="res://scripts/volume_slider.gd" id="1_owmri"]
 [ext_resource type="Texture2D" uid="uid://bi8u3yrxubi81" path="res://assets/texture/ui/fantasyui/Divider Fade/divider-fade-001.png" id="3_xf2n0"]
 [ext_resource type="Texture2D" uid="uid://cyhdckkuwts6k" path="res://assets/texture/ui/fantasyui/Divider Fade/divider-fade-001rev.png" id="4_0tqr5"]
 

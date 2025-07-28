@@ -1,7 +1,7 @@
 [gd_scene load_steps=30 format=3 uid="uid://d10hncipllnox"]
 
 [ext_resource type="Texture2D" uid="uid://7lnsv8f8qabp" path="res://assets/texture/game/explosive_explode.png" id="1_k5klo"]
-[ext_resource type="Script" path="res://scripts/actor/explosive_player.gd" id="1_ld78b"]
+[ext_resource type="Script" uid="uid://bmvrvlxddgv5s" path="res://scripts/actor/explosive_player.gd" id="1_ld78b"]
 [ext_resource type="Texture2D" uid="uid://c31oluppw1nv6" path="res://assets/texture/game/explosive_idle.png" id="2_8ukad"]
 [ext_resource type="AudioStream" uid="uid://cn67kqaey11vn" path="res://assets/audio/explosion.wav" id="4_aynxf"]
 [ext_resource type="Texture2D" uid="uid://dre1gmcw1wi2s" path="res://assets/texture/game/splat19.png" id="5_to8eg"]
